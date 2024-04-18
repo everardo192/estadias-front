@@ -1,0 +1,8 @@
+<form [formGroup]="nombreEmpresaForm" (ngSubmit)="onSubmit()">
+    <div>
+      <label for="NombreEmpresa">Nombre de la Empresa:</label>
+      <input type="text" formControlName="nombreEmpresa">
+    </div>
+    <button type="submit">Guardar</button>
+  </form>
+  

@@ -1,0 +1,16 @@
+<form [formGroup]="solicitudForm" (ngSubmit)="onSubmit()">
+    <div>
+      <label for="NomEmpresa">Nombre de la Empresa:</label>
+      <input type="text" formControlName="NomEmpresa">
+    </div>
+    <div>
+      <label for="Perfil">Perfil:</label>
+      <input type="text" formControlName="Perfil">
+    </div>
+    <div>
+      <label for="Cantidad">Cantidad:</label>
+      <input type="number" formControlName="Cantidad">
+    </div>
+    <button type="submit">Guardar</button>
+  </form>
+  

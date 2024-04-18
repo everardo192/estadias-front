@@ -1,0 +1,24 @@
+<form [formGroup]="empresaForm" (ngSubmit)="onSubmit()">
+    <div>
+      <label for="Nombre">Nombre:</label>
+      <input type="text" formControlName="Nombre">
+    </div>
+    <div>
+      <label for="Industria">Industria:</label>
+      <input type="text" formControlName="Industria">
+    </div>
+    <div>
+      <label for="Ubicacion">Ubicación:</label>
+      <input type="text" formControlName="Ubicacion">
+    </div>
+    <div>
+      <label for="Telefono">Teléfono:</label>
+      <input type="text" formControlName="Telefono">
+    </div>
+    <!-- <div>
+      <label for="ClaveEmpresa">Clave Empresa:</label>
+      <input type="text" formControlName="ClaveEmpresa">
+    </div> -->
+    <button type="submit">Guardar</button>
+  </form>
+  
