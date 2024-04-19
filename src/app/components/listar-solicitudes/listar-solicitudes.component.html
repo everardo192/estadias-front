@@ -4,5 +4,60 @@
       <input type="text" formControlName="nombreEmpresa">
     </div>
     <button type="submit">Guardar</button>
-  </form>
+</form>
   
+  @if (solicitudes.length>0) {
+    <div class="contenedor">
+
+      <div class="solicitudes">
+        @for (solicitud of solicitudes; track $index) {   
+          <div class="solicitud">
+            <div class="datos">
+              <h2 class="titulo">{{solicitud.NomEmpresa}}</h2>
+              <p>{{solicitud.Perfil}}</p>
+              <p>{{solicitud.Cantidad}}</p>
+            </div>
+      
+            <div class="boton">
+              <button (click)="editarSolicitud(solicitud._id)">Editar</button>
+              <button (click)="borrarSolicitud(solicitud._id)">Borrar</button>
+            </div>
+          </div>
+        }
+      </div>
+      @if (isEditar) {
+        <div class="form-editar">
+          <div>
+            <p>{{editarSoli}}</p>
+            <!--crear un componnete para editar solicitu y se lo paso por prop input--> 
+            <form [formGroup]="formularioEdit" (ngSubmit)="editSubmit()">
+              <div>
+                <label for="NomEmpresa">Nombre de la Empresa:</label>
+                <input type="text" formControlName="NomEmpresa" id="NomEmpresa">
+                <!-- <div *ngIf="formulario.get('NomEmpresa').invalid && formulario.get('NomEmpresa').touched">
+                  <div *ngIf="formulario.get('NomEmpresa').errors.required">El nombre de la empresa es requerido.</div>
+                </div> -->
+              </div>
+              <div>
+                <label for="Perfil">Perfil:</label>
+                <input type="text" formControlName="Perfil" id="Perfil">
+                <!-- <div *ngIf="formulario.get('Perfil').invalid && formulario.get('Perfil').touched">
+                  <div *ngIf="formulario.get('Perfil').errors.required">El perfil es requerido.</div>
+                </div> -->
+              </div>
+              <div>
+                <label for="Cantidad">Cantidad:</label>
+                <input type="number" formControlName="Cantidad" id="Cantidad">
+                <!-- <div *ngIf="formulario.get('Cantidad').invalid && formulario.get('Cantidad').touched">
+                  <div *ngIf="formulario.get('Cantidad').errors.required">La cantidad es requerida.</div>
+                  <div *ngIf="formulario.get('Cantidad').errors.min">La cantidad debe ser mayor que 0.</div>
+                </div> -->
+              </div>
+              <button type="submit" [disabled]="!formularioEdit.valid">Guardar Cambios</button>
+            </form>
+            
+          </div>
+        </div>
+      }
+    </div>
+}

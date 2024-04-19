@@ -28,4 +28,33 @@ export class SolicitudService {
       console.log("Error Agular");
     }
   }
+
+  async obtenerUnaSolicitud(id:string){
+    try {
+      const {data} = await clienteAxios.get('solicitud/one/'+id);
+      return data;
+    } catch (error) {
+      console.log("Error desde Angular");
+    }
+  }
+
+  async editarDolicitud(id:string,solicitud:any){
+    try {
+      const { data } = await clienteAxios.put('/solicitud/edit/'+id,solicitud);
+      console.log(data);
+      return data;
+    }catch(error){
+      console.log("Error Agular");
+    }
+  }
+
+  async borraSolicitud(id:string){
+    try {
+      const { data } = await clienteAxios.delete('/solicitud/delete/'+id);
+      console.log(data);
+      return data;
+    } catch (error) {
+      console.log("Error en angular");
+    }
+  }
 }
